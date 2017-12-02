@@ -1,0 +1,60 @@
+#include<stdio.h>
+#include<conio.h>
+
+
+#define MAXSTACK 35
+#define EMPTY -1
+#define FULL MAXSTACK -1
+
+void infixtoprefix(char infix[20],char prefix[20]);
+void reverse(char array[30]);
+int isOperator(char symbol);
+int prcd(symbol);
+int top=-1;
+char stack[MAX];
+
+
+
+
+
+typedef enum {FALSE, TRUE} Boolean;
+
+
+
+typedef int StackEntry;
+typedef struct {
+	int top;
+	StackEntry entry[MAXSTACK];
+}Stack;
+
+void CreateStack(Stack *s){
+	s->top = -1;
+
+}
+Boolean IsStackEmpty(const Stack *s){
+	return s->top == EMPTY;
+}
+
+Boolean IsStackFull(const Stack *s){
+
+	return s->top == FULL;
+}
+
+
+void Push(StackEntry item, Stack *s){
+       if(IsStackFull(s))
+		printf("Stack is full \n");
+       else
+		s->entry[++s->top] = item;
+
+}
+
+void Pop(StackEntry *item, Stack *s){
+       if(IsStackEmpty(s))
+		printf("Stack is empty \n");
+       else
+	*item = s->entry[s->top--];
+}
+
+
+
